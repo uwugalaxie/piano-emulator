@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PianoApp:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PianoApp_jar</output-path>
+    <root id="archive" name="PianoApp.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="PianoApp" />
+    </root>
+  </artifact>
+</component>
