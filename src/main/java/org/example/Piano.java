@@ -16,8 +16,9 @@ public class Piano {
     };
     private Synthesizer synthesizer;
     private MidiChannel midiChannel;
-    private int currentOctave;
+    public int currentOctave;
     private int volume;
+    public boolean isPlaying;
 
     public void AppGUI() {
         JFrame frame = new JFrame("Piano emulator");
@@ -104,7 +105,7 @@ public class Piano {
         frame.pack();
     }
 
-    private void keyboardSupport() {
+    public void keyboardSupport() {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
@@ -182,6 +183,7 @@ public class Piano {
     }
 
     private void playSound(int keyIndex) {
+        isPlaying = true;
         if (synthesizer == null || !synthesizer.isOpen()) {
             try {
                 synthesizer = MidiSystem.getSynthesizer();
@@ -199,6 +201,7 @@ public class Piano {
     }
 
     private void stopSound(int keyIndex) {
+        isPlaying = false;
         if (synthesizer != null && synthesizer.isOpen()) {
             int midiNote = (currentOctave * keysNum) + keyIndex;
             midiChannel.noteOff(midiNote);
